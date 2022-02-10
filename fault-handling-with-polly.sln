@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResponseService", "ResponseService\ResponseService.csproj", "{A6709778-2CF8-45AC-8803-72B1E1D62445}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestService", "RequestService\RequestService.csproj", "{2D4C7CBB-A1F3-4970-B543-D70261453376}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6709778-2CF8-45AC-8803-72B1E1D62445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6709778-2CF8-45AC-8803-72B1E1D62445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6709778-2CF8-45AC-8803-72B1E1D62445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6709778-2CF8-45AC-8803-72B1E1D62445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4C7CBB-A1F3-4970-B543-D70261453376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4C7CBB-A1F3-4970-B543-D70261453376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4C7CBB-A1F3-4970-B543-D70261453376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4C7CBB-A1F3-4970-B543-D70261453376}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
