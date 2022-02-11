@@ -8,10 +8,12 @@ namespace RequestService.Controllers
     public class RequestController : ControllerBase
     {
         private readonly ClientPolicy _clientPolicy;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public RequestController(ClientPolicy clientPolicy)
+        public RequestController(ClientPolicy clientPolicy, IHttpClientFactory httpClientFactory)
         {
             _clientPolicy = clientPolicy;
+            _httpClientFactory = httpClientFactory;
         }
 
         // GET /api/request/25
@@ -19,9 +21,9 @@ namespace RequestService.Controllers
         [HttpGet]
         public async Task<ActionResult> MakeARequest(int id)
         {
-            var client = new HttpClient();
+            var client = _httpClientFactory.CreateClient();
 
-            var response = await _clientPolicy.ExponentialHttpRetry.ExecuteAsync(
+            var response = await _clientPolicy.ImmediateHttpRetry.ExecuteAsync(
                 () => client.GetAsync($"https://localhost:7099/api/response/{id}"));
 
             if (response.IsSuccessStatusCode)

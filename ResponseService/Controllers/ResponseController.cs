@@ -6,7 +6,7 @@ namespace ResponseService.Controllers
     [ApiController]
     public class ResponseController : ControllerBase
     {
-        // GET /api/response/100
+        // GET /api/response/25
         [Route("{id:int}")]
         [HttpGet]
         public ActionResult GetAResponse(int id)
