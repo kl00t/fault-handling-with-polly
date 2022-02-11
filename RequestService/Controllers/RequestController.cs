@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RequestService.Policies;
 
 namespace RequestService.Controllers
 {
@@ -6,12 +7,23 @@ namespace RequestService.Controllers
     [ApiController]
     public class RequestController : ControllerBase
     {
-        // GET /api/request
+        private readonly ClientPolicy _clientPolicy;
+
+        public RequestController(ClientPolicy clientPolicy)
+        {
+            _clientPolicy = clientPolicy;
+        }
+
+        // GET /api/request/25
+        [Route("{id:int}")]
         [HttpGet]
-        public async Task<ActionResult> MakeARequest()
+        public async Task<ActionResult> MakeARequest(int id)
         {
             var client = new HttpClient();
-            var response = await client.GetAsync("https://localhost:7099/api/response/25");
+
+            var response = await _clientPolicy.ExponentialHttpRetry.ExecuteAsync(
+                () => client.GetAsync($"https://localhost:7099/api/response/{id}"));
+
             if (response.IsSuccessStatusCode)
             {
                 Console.WriteLine("--> ResponseService returned SUCCESS");
